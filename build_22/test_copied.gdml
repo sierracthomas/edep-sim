@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+ <define>
+  <position name="R" unit="mm" x="0" y="0" z="0" />
+  <rotation name="V" unit="degree" x="10" y="20" z="30" />
+  <variable name="veloSD" value="4" />
+ </define>
+
+ <materials>
+  <element Z="18" formula="Ar" name="argon">
+    <atom value="39.948"/>
+  </element>
+  <material Z="7" formula=" " name="Nitrogen" >
+   <D value="0.00125" />
+   <atom value="14.01" />
+  </material>
+  <material Z="8" formula=" " name="Oxygen" >
+   <D value="0.00143" />
+   <atom value="16.0" />
+  </material>
+  <material formula=" " name="Air" >
+   <D value="0.0012" />
+   <fraction n="0.7" ref="Nitrogen" />
+   <fraction n="0.3" ref="Oxygen" />
+  </material>
+  <material Z="18" formula=" " name="Ar40">
+    <D value="1.40" />
+    <atom value="39.9624"/>
+  </material>
+  <material formula="" name="LAr">
+    <D value="1.4"/>
+    <composite n="1" ref="argon"/>
+  </material>
+
+ </materials>
+
+ <solids>
+  <box lunit="mm" name="Box" x="2000" y="2000" z="2000"/>
+  <box lunit="mm" name="WorldBox" x="2400" y="2400" z="2400"/>
+ </solids>
+
+ <structure>
+  <volume name="Boxvol" >
+   <materialref ref="LAr" />
+   <solidref ref="Box" />
+   <auxiliary auxtype="SensDet" auxvalue="Boxvol"/>
+   <auxiliary auxtype="Color" auxvalue="Blue"/>
+  </volume>
+
+  <volume name="World" >
+   <materialref ref="Air" />
+   <solidref ref="WorldBox" />
+   <physvol>
+    <volumeref ref="Boxvol" />
+    <positionref ref="R"  />
+   </physvol>
+  </volume>
+ </structure>
+
+ <setup name="Default" version="1.0" >
+  <world ref="World" />
+ </setup>
+</gdml>
+

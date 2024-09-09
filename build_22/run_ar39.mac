@@ -1,0 +1,19 @@
+
+
+/edep/db/set/lengthThreshold 0.01 mm
+/edep/db/set/trajectoryDeposit 10 eV
+/edep/db/set/trajectoryAccuracy 1 mm
+/edep/db/set/neutronThreshold 50 MeV
+/edep/db/set/gammaThreshold 0.1 MeV
+
+/gps/pos/type Point
+/gps/particle e+
+/gps/position 0 0 0 #GPS origin position
+/gps/direction 0 0 1 #momentum oriented along the Z axis
+/gps/ene/type Mono #for monoenergetic: I=E
+/gps/ene/mono ENERGY keV
+
+
+/generator/count/fixed/number 1
+/generator/count/set fixed
+/generator/add
