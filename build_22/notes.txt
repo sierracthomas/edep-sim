@@ -1,0 +1,15 @@
+how to run:
+
+cd /home/sthoma31/edep
+singularity shell edep-sim_latest.sif
+cd edep-sim
+source ../build/start_root.sh
+source ../build/start_root.sh
+cd ../build_22
+
+
+run de-excitation gamma energies:
+bash run_all_energies.sh
+
+run argon39 beta decay energies: 
+bash ar39_save.sh
